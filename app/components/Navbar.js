@@ -70,7 +70,7 @@ export default function Navbar() {
                 <div key={link.title} className="relative group">
                   <a 
                     href={link.href}
-                    className={`font-semibold transition-colors duration-300 relative group text-sm ${
+                    className={`font-semibold transition-colors duration-300 relative group text-base ${
                       isActive(link.href) 
                         ? 'text-[#FAB045]' 
                         : 'text-gray-500 hover:text-[#FAB045]'
@@ -89,14 +89,14 @@ export default function Navbar() {
             <div className="flex items-center space-x-3 sm:space-x-4">
               {/* Contact info - hidden on small mobile, visible on sm+ */}
               <div className="hidden sm:block text-right">
-                <div className="text-xs text-[#A0A1A2]">Need Help?</div>
-                <div className="text-gray-900 font-bold text-sm">+31685865799</div>
+                <div className="text-base text-[#A0A1A2]">Need Help?</div>
+                <div className="text-gray-1000 font-bold text-sm">+31685865799</div>
               </div>
               
               {/* Quote button - always visible */}
               <button 
                 onClick={() => setIsQuoteModalOpen(true)}
-                className="bg-gradient-to-r from-[#ff7a00] to-[#ffd700] hover:from-[#ff7a00] hover:to-[#ffd700] text-white font-semibold py-2 px-3 sm:px-4 rounded-lg transition-all duration-300 hover:shadow-md hover:scale-105 shadow-sm text-xs sm:text-sm whitespace-nowrap"
+                className="bg-gradient-to-r from-[#ff7a00] to-[#ffd700] hover:from-[#ff7a00] hover:to-[#ffd700] text-white font-semibold py-2 px-3 sm:px-4 rounded-lg transition-all duration-300 hover:shadow-md hover:scale-105 shadow-sm text-xs sm:text-sm cursor-pointer whitespace-nowrap"
               > 
                 Get Quote
               </button>
