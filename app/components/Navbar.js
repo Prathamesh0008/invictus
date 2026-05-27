@@ -90,7 +90,7 @@ export default function Navbar() {
               {/* Contact info - hidden on small mobile, visible on sm+ */}
               <div className="hidden sm:block text-right">
                 <div className="text-base text-[#A0A1A2]">Need Help?</div>
-                <div className="text-gray-1000 font-bold text-sm">+31685865799</div>
+                <div className="text-gray-1000 font-bold text-base">+31685865799</div>
               </div>
               
               {/* Quote button - always visible */}

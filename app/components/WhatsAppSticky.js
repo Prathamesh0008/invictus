@@ -5,7 +5,7 @@ import { FaWhatsapp, FaTimes, FaComment } from 'react-icons/fa';
 
 export default function WhatsAppSticky() {
   const [isExpanded, setIsExpanded] = useState(false);
-  const phoneNumber = '+918291293651';
+  const phoneNumber = '';
   const whatsappLink = `https://wa.me/${phoneNumber.replace(/\D/g, '')}`;
 
   const handleWhatsAppClick = () => {

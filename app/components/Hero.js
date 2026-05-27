@@ -8,56 +8,44 @@ import GlobalLottie from '@/public/lottie/Global Network.json'
 import SecuredLottie from '@/public/lottie/Secured.json'
 import DeliveryLottie from '@/public/lottie/Dlivery Map.json'
 
-// Counter component for animated numbers
 const Counter = ({ end, duration = 2000, suffix = '', prefix = '', decimals = 0, className = '' }) => {
   const [count, setCount] = useState(0)
   const countRef = useRef(null)
   const hasAnimated = useRef(false)
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasAnimated.current) {
-            hasAnimated.current = true
-            animateCounter()
-          }
-        })
-      },
-      { threshold: 0.1 }
-    )
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !hasAnimated.current) {
+          hasAnimated.current = true
+          animateCounter()
+        }
+      })
+    }, { threshold: 0.1 })
 
-    if (countRef.current) {
-      observer.observe(countRef.current)
-    }
+    if (countRef.current) observer.observe(countRef.current)
 
     return () => {
-      if (countRef.current) {
-        observer.unobserve(countRef.current)
-      }
+      if (countRef.current) observer.unobserve(countRef.current)
     }
   }, [])
 
   const animateCounter = () => {
     const startTime = Date.now()
     const startValue = 0
-    
+
     const updateCounter = () => {
       const currentTime = Date.now()
       const elapsed = currentTime - startTime
       const progress = Math.min(elapsed / duration, 1)
-      
-      // Easing function for smooth animation
       const easeOutQuart = 1 - Math.pow(1 - progress, 4)
       const currentValue = startValue + (end - startValue) * easeOutQuart
-      
+
       setCount(parseFloat(currentValue.toFixed(decimals)))
-      
-      if (progress < 1) {
-        requestAnimationFrame(updateCounter)
-      }
+
+      if (progress < 1) requestAnimationFrame(updateCounter)
     }
-    
+
     requestAnimationFrame(updateCounter)
   }
 
@@ -71,50 +59,73 @@ const Counter = ({ end, duration = 2000, suffix = '', prefix = '', decimals = 0,
 export default function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
+  const iconBoxClass =
+    'w-16 h-16 sm:w-20 sm:h-20 md:w-25 md:h-25 mx-auto overflow-visible'
+
   const features = [
     {
       icon: (
-        <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-25 md:h-25 mx-auto">
-          <Lottie animationData={lightningLottie} loop autoplay />
+        <div className={iconBoxClass}>
+          <Lottie
+            animationData={lightningLottie}
+            loop
+            autoplay
+            className="scale-[1.35]"
+          />
         </div>
       ),
       title: 'Lightning Fast',
       desc: 'Same-Day Dispatch',
       color: 'text-[#FAB045]',
-      gradient: 'from-[#FAB045] to-[#FFD700]'
+      gradient: 'from-[#FAB045] to-[#FFD700]',
     },
     {
       icon: (
-        <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-25 md:h-25 mx-auto">
-          <Lottie animationData={DeliveryLottie} loop autoplay />
+        <div className={iconBoxClass}>
+          <Lottie
+            animationData={DeliveryLottie}
+            loop
+            autoplay
+            className="scale-[1.35]"
+          />
         </div>
       ),
       title: 'Live Tracking',
       desc: 'Real-time Updates',
       color: 'text-[#FAB045]',
-      gradient: 'from-[#FAB045] to-[#FFD700]'
+      gradient: 'from-[#FAB045] to-[#FFD700]',
     },
     {
       icon: (
-        <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-25 md:h-25 mx-auto">
-          <Lottie animationData={SecuredLottie} loop autoplay />
+        <div className={iconBoxClass}>
+          <Lottie
+            animationData={SecuredLottie}
+            loop
+            autoplay
+            className="scale-[1.55]"
+          />
         </div>
       ),
       title: 'Armored Security',
       desc: 'Advanced Protection',
       color: 'text-[#FAB045]',
-      gradient: 'from-[#FAB045] to-[#FFD700]'
+      gradient: 'from-[#FAB045] to-[#FFD700]',
     },
     {
       icon: (
-        <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-25 md:h-25 mx-auto">
-          <Lottie animationData={GlobalLottie} loop autoplay />
+        <div className={iconBoxClass}>
+          <Lottie
+            animationData={GlobalLottie}
+            loop
+            autoplay
+            className="scale-[1.45]"
+          />
         </div>
       ),
       title: 'Global Network',
       desc: '180+ Countries',
       color: 'text-[#FAB045]',
-      gradient: 'from-[#FAB045] to-[#FFD700]'
+      gradient: 'from-[#FAB045] to-[#FFD700]',
     },
   ]
 
@@ -131,65 +142,64 @@ export default function Hero() {
 
   return (
     <>
-      <section 
+      <section
         className="relative text-white overflow-hidden min-h-screen flex items-center"
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')",
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-          backgroundAttachment: 'fixed'
-        }}  
+          backgroundAttachment: 'fixed',
+        }}
       >
-        {/* Enhanced overlay with gradient */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/75 to-black/85"></div>
-        
-        {/* Animated background elements */}
+
         <div className="absolute inset-0 overflow-hidden">
-          {/* Floating glow orbs */}
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-[#FAB045]/20 to-transparent rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-l from-[#4CC9F0]/20 to-transparent rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
-          
-          {/* Animated grid lines */}
+          <div
+            className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-l from-[#4CC9F0]/20 to-transparent rounded-full blur-3xl animate-pulse"
+            style={{ animationDelay: '2s' }}
+          ></div>
+
           <div className="absolute inset-0 opacity-10">
-            <div className="h-full w-full" style={{
-              backgroundImage: `linear-gradient(90deg, transparent 95%, #FAB045 100%),
+            <div
+              className="h-full w-full"
+              style={{
+                backgroundImage: `linear-gradient(90deg, transparent 95%, #FAB045 100%),
                                linear-gradient(0deg, transparent 95%, #4CC9F0 100%)`,
-              backgroundSize: '60px 60px'
-            }}></div>
+                backgroundSize: '60px 60px',
+              }}
+            ></div>
           </div>
         </div>
-        
+
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-6 sm:py-10 lg:py-12 2xl:py-8">
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col lg:flex-row items-center lg:items-center gap-6 lg:gap-12 xl:gap-16">
-              {/* Left side - Text content */}
               <div className="lg:w-1/2 text-center lg:text-left">
-                <div className="mb-5 lg:mb-6">
+                {/* <div className="mb-5 lg:mb-6">
                   <span className="inline-block bg-gradient-to-r from-[#E65100] to-[#f8c468] text-white px-4 py-1.5 sm:px-6 sm:py-2 md:px-7 md:py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wide shadow-2xl">
                     <span className="flex items-center justify-center">
-                      <span className="mr-2 animate-pulse">⚡</span>
-                      Elite Global Logistics
+                      
                     </span>
-                  </span> 
-                </div>
-                
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-3 sm:mb-5 leading-tight tracking-tight font-medium">
-                  <span className="block bg-gradient-to-r from-white/40 via-white/60 to-[#E65100]/70 bg-clip-text text-transparent">
-                    Precision
                   </span>
+                </div> */}
+
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-3 sm:mb-5 leading-tight tracking-tight font-medium">
+                  <span className="block text-white">Precision</span>
                   <span className="block pb-1 leading-[1.2] bg-gradient-to-r from-[#ff7a00]/80 via-[#FF8F00]/70 to-[#ff7a00]/80 bg-clip-text text-transparent animate-gradient bg-[length:200%_auto] font-medium antialiased">
                     Logistics
                   </span>
                 </h1>
-                
-                <p className="text-sm sm:text-base md:text-lg text-gray-200 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
-                  Revolutionizing global supply chains with cutting-edge technology, 
+
+                <p className="text-base sm:text-lg md:text-xl text-gray-200 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
+                  Revolutionizing global supply chains with cutting-edge technology,
                   real-time visibility, and unparalleled security for your shipments.
                 </p>
-                
+
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 justify-center lg:justify-start">
-                  <button 
+                  <button
                     onClick={handleGetStarted}
                     className="group relative bg-gradient-to-r from-[#E65100] to-[#FFD700] hover:from-[#FF8F00] hover:to-[#FFC300] text-white font-bold py-2.5 sm:py-3 md:py-4 px-5 sm:px-7 md:px-8 rounded-xl text-sm sm:text-base transition-all duration-300 hover:shadow-2xl hover:scale-105 overflow-hidden"
                   >
@@ -199,8 +209,8 @@ export default function Hero() {
                       Launch Shipment
                     </span>
                   </button>
-                  
-                  <button 
+
+                  <button
                     onClick={handleTrackShipment}
                     className="group relative border-2 border-white/30 hover:border-[#FAB045]/50 text-white font-semibold py-2.5 sm:py-3 md:py-4 px-5 sm:px-7 md:px-8 rounded-xl text-sm sm:text-base transition-all duration-300 backdrop-blur-xl bg-white/5 hover:bg-white/10"
                   >
@@ -214,28 +224,31 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* Right side - Feature boxes */}
               <div className="lg:w-1/2 w-full mt-6 lg:mt-0">
                 <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-5">
                   {features.map((feature, index) => (
-                    <div 
-                      key={index} 
+                    <div
+                      key={index}
                       className="group relative bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-2xl rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-5 border border-white/20 hover:border-[#FAB045]/50 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 overflow-hidden"
                     >
-                      <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
-                      
+                      <div
+                        className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
+                      ></div>
+
                       <div className="relative flex flex-col items-center text-center">
                         <div className={`${feature.color} mb-2 sm:mb-3 md:mb-4 text-2xl sm:text-3xl group-hover:scale-110 transition-transform duration-500`}>
                           {feature.icon}
                         </div>
+
                         <h4 className="font-bold text-sm sm:text-base md:text-lg mb-0.5 sm:mb-1 md:mb-2 group-hover:text-[#FAB045] transition-colors duration-300">
                           {feature.title}
                         </h4>
+
                         <p className="text-[11px] sm:text-xs text-gray-300 group-hover:text-white transition-colors duration-300">
                           {feature.desc}
                         </p>
                       </div>
-                      
+
                       <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-[#FAB045] to-[#4CC9F0] group-hover:w-10 sm:group-hover:w-12 transition-all duration-500"></div>
                     </div>
                   ))}
@@ -248,33 +261,22 @@ export default function Hero() {
 
       <style jsx global>{`
         @keyframes gradient {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
+          0%, 100% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
         }
-        
+
         .animate-gradient {
           animation: gradient 3s ease infinite;
         }
-        
-        @keyframes countUp {
-          from {
-            opacity: 0;
-            transform: translateY(10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        .counter-animate {
-          animation: countUp 0.5s ease-out forwards;
-        }
       `}</style>
 
-      <GetStartedModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
+      <GetStartedModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
       />
     </>
   )
