@@ -845,6 +845,7 @@ export default function Contact() {
           to { transform: rotate(360deg); }
         }
       `}</style>
+      
     </div>
   );
 }
