@@ -176,7 +176,7 @@ export default function Hero() {
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-6 sm:py-10 lg:py-12 2xl:py-8">
           <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col lg:flex-row items-center lg:items-center gap-6 lg:gap-12 xl:gap-16">
+            <div className="flex flex-col lg:flex-row items-center lg:items-center gap-6 lg:gap-8 xl:gap-16">
               <div className="lg:w-1/2 text-center lg:text-left">
                 {/* <div className="mb-5 lg:mb-6">
                   <span className="inline-block bg-gradient-to-r from-[#E65100] to-[#f8c468] text-white px-4 py-1.5 sm:px-6 sm:py-2 md:px-7 md:py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wide shadow-2xl">

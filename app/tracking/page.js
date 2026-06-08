@@ -357,20 +357,6 @@ export default function TrackingPage() {
   return (
     <>
       <div className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50 overflow-x-hidden">
-        {/* Admin Toggle Button */}
-        <div className="fixed top-4 right-4 z-50">
-          <button
-            onClick={() => setIsAdminMode(!isAdminMode)}
-            className={`px-4 py-2 rounded-lg font-semibold transition-all duration-300 shadow-lg ${
-              isAdminMode 
-                ? 'bg-gradient-to-r from-[#E65100] to-[#FFD700] text-white' 
-                : 'bg-gray-800 text-white hover:bg-gray-700'
-            }`}
-          >
-            {isAdminMode ? 'Switch to User Mode' : 'Admin Dashboard'}
-          </button>
-        </div>
-
         {/* Live Updates Toggle */}
         {isAdminMode && (
           <div className="fixed top-4 left-4 z-50 bg-white rounded-lg shadow-lg p-2 flex items-center gap-2">

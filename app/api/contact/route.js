@@ -181,32 +181,36 @@ export async function POST(request) {
                 </div>
               </div>
               
-              <!-- Quick Actions Grid -->
-              <h2 style="color: #2d3748; font-size: 18px; margin: 0 0 15px; font-weight: 600;">Need Immediate Assistance?</h2>
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px;">
-                <!-- Phone Card -->
-                <a href="tel:+31685865799" style="text-decoration: none; display: block;">
-                  <div style="background: #f8fafd; border-radius: 12px; padding: 20px; text-align: center; border: 1px solid #eef2f6; transition: all 0.3s;">
-                    <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #FAB045 0%, #f5921e 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px;">
-                      <span style="color: white; font-size: 24px;">📞</span>
-                    </div>
-                    <div style="color: #2d3748; font-weight: 600; margin-bottom: 4px;">Call Us</div>
-                    <div style="color: #718096; font-size: 14px;">+31 6 85865799</div>
-                    <div style="color: #FAB045; font-size: 13px; margin-top: 8px;">24/7 Available</div>
-                  </div>
-                </a>
-                
-                <!-- WhatsApp Card -->
-                <a href="https://wa.me/918291293651" style="text-decoration: none; display: block;">
-                  <div style="background: #f8fafd; border-radius: 12px; padding: 20px; text-align: center; border: 1px solid #eef2f6; transition: all 0.3s;">
-                    <div style="width: 48px; height: 48px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px;">
-                      <span style="color: white; font-size: 28px;">💬</span>
-                    </div>
-                    <div style="color: #2d3748; font-weight: 600; margin-bottom: 4px;">WhatsApp</div>
-                    <div style="color: #718096; font-size: 14px;">+91 8291293651</div>
-                    <div style="color: #25D366; font-size: 13px; margin-top: 8px;">Instant Chat</div>
-                  </div>
-                </a>
+            <!-- Quick Actions Grid -->
+<h2 style="color: #2d3748; font-size: 18px; margin: 0 0 15px; font-weight: 600;">
+  Need Immediate Assistance?
+</h2>
+
+<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 30px;">
+  <!-- Phone Card -->
+  <a href="tel:+31685865799" style="text-decoration: none; display: block;">
+    <div style="background: #f8fafd; border-radius: 12px; padding: 20px; text-align: center; border: 1px solid #eef2f6;">
+      <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #F04A00 0%, #FAB045 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px;">
+        <span style="color: white; font-size: 24px;">📞</span>
+      </div>
+      <div style="color: #2d3748; font-weight: 600; margin-bottom: 4px;">Call Us</div>
+      <div style="color: #718096; font-size: 14px;">+31 6 85865799</div>
+      <div style="color: #F04A00; font-size: 13px; margin-top: 8px;">24/7 Available</div>
+    </div>
+  </a>
+
+  <!-- WhatsApp Card -->
+  <a href="https://wa.me/918291293651" style="text-decoration: none; display: block;">
+    <div style="background: #f8fafd; border-radius: 12px; padding: 20px; text-align: center; border: 1px solid #eef2f6;">
+      <div style="width: 48px; height: 48px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px;">
+        <span style="color: white; font-size: 28px;">💬</span>
+      </div>
+      <div style="color: #2d3748; font-weight: 600; margin-bottom: 4px;">WhatsApp</div>
+      <div style="color: #718096; font-size: 14px;">+91 8291293651</div>
+      <div style="color: #25D366; font-size: 13px; margin-top: 8px;">Instant Chat</div>
+    </div>
+  </a>
+</div>
                 
                 <!-- Email Card -->
                 <div style="background: #f8fafd; border-radius: 12px; padding: 20px; text-align: center; border: 1px solid #eef2f6;">
