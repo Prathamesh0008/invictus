@@ -7,7 +7,7 @@ import lightningLottie from '@/public/lottie/Loading_car.json'
 import GlobalLottie from '@/public/lottie/Global Network.json'
 import SecuredLottie from '@/public/lottie/Secured.json'
 import DeliveryLottie from '@/public/lottie/Dlivery Map.json'
-
+import Link from "next/link";
 const Counter = ({ end, duration = 2000, suffix = '', prefix = '', decimals = 0, className = '' }) => {
   const [count, setCount] = useState(0)
   const countRef = useRef(null)
@@ -210,17 +210,17 @@ export default function Hero() {
                     </span>
                   </button>
 
-                  <button
-                    onClick={handleTrackShipment}
-                    className="group relative border-2 border-white/30 hover:border-[#FAB045]/50 text-white font-semibold py-2.5 sm:py-3 md:py-4 px-5 sm:px-7 md:px-8 rounded-xl text-sm sm:text-base transition-all duration-300 backdrop-blur-xl bg-white/5 hover:bg-white/10"
-                  >
-                    <span className="relative flex items-center justify-center">
-                      <FaSearch className="mr-2 sm:mr-3 group-hover:rotate-90 transition-transform duration-300" />
-                      <span className="group-hover:text-[#FAB045] transition-colors duration-300">
-                        Track Consignment
-                      </span>
-                    </span>
-                  </button>
+                <Link
+  href="/tracking"
+  className="group relative border-2 border-white/30 hover:border-[#FAB045]/50 text-white font-semibold py-2.5 sm:py-3 md:py-4 px-5 sm:px-7 md:px-8 rounded-xl text-sm sm:text-base transition-all duration-300 backdrop-blur-xl bg-white/5 hover:bg-white/10 inline-flex items-center justify-center"
+>
+  <span className="relative flex items-center justify-center">
+    <FaSearch className="mr-2 sm:mr-3 group-hover:rotate-90 transition-transform duration-300" />
+    <span className="group-hover:text-[#FAB045] transition-colors duration-300">
+      Track Consignment
+    </span>
+  </span>
+</Link>
                 </div>
               </div>
 

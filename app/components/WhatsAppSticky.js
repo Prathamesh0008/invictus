@@ -118,12 +118,12 @@ export default function WhatsAppSticky() {
         </button>
 
         {/* Quick Message Indicator */}
-        {!isExpanded && (
+        {/* {!isExpanded && (
           <div className="flex items-center space-x-2 bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg border border-green-100">
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
             <span className="text-sm font-medium text-gray-700">Chat with us</span>
           </div>
-        )}
+        )} */}
       </div>
 
       {/* Styles for animation */}

@@ -265,8 +265,7 @@ export default function ServicesPage() {
             {allServices.map((service) => (
               <div
                 key={service.id}
-                className={`self-start group relative bg-white rounded-2xl p-6 border transition-all duration-500 overflow-hidden ${
-                  expandedService === service.id
+className={`cursor-pointer group relative bg-white rounded-2xl p-6 border transition-all duration-500 overflow-hidden flex flex-col h-full min-h-[370px] ${                  expandedService === service.id
                     ? 'border-[#E65100] shadow-2xl'
                     : 'border-gray-200 hover:border-[#E65100]/30 hover:shadow-xl'
                 }`}
@@ -275,9 +274,9 @@ export default function ServicesPage() {
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#E65100] to-[#FFD700]" />
 
                 {/* ICON CONTAINER - now uses gradient */}
-                <button
+                {/* <button
                   onClick={() => handleServiceClick(service.id)}
-                  className="relative mb-6 w-full text-left"
+                  className=" cursor-pointer relative mb-6 w-full text-left cursor-pointer"
                 >
                   <div
                     className={`inline-flex p-4 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg ${
@@ -288,7 +287,22 @@ export default function ServicesPage() {
                   >
                     <div className="text-3xl">{service.icon}</div>
                   </div>
-                </button>
+                </button> */}
+                <button
+  type="button"
+  onClick={() => handleServiceClick(service.id)}
+  className="relative mb-6 w-full text-left cursor-pointer"
+>
+  <div
+    className={`cursor-pointer inline-flex p-4 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg ${
+      expandedService === service.id
+        ? "bg-gradient-to-br from-[#E65100] to-[#FFD700] text-white shadow-md"
+        : "bg-gradient-to-br from-[#E65100]/20 to-[#FFD700]/20 text-[#E65100] hover:from-[#E65100]/30 hover:to-[#FFD700]/30"
+    }`}
+  >
+    <div className="text-3xl cursor-pointer">{service.icon}</div>
+  </div>
+</button>
 
                 <h3 className="text-2xl font-medium text-black/80 mb-4">{service.title}</h3>
                 <p className="text-gray-600 mb-6">{service.description}</p>
@@ -306,7 +320,7 @@ export default function ServicesPage() {
                         <div key={idx} className="border-l-2 border-[#E65100] pl-3">
                           <button
                             onClick={() => handleFeatureClick(idx)}
-                            className="w-full text-left"
+                            className="w-full text-left cursor-pointer"
                           >
                             <div className="flex justify-between items-center">
                               <div className="flex items-center">
@@ -336,19 +350,21 @@ export default function ServicesPage() {
                 )}
 
                 {/* ACTIONS - button with gradient using #FF8F00 and #FFD700 */}
-                <div className="flex justify-between items-center">
-                  <button
-                    onClick={() => handleServiceClick(service.id)}
-                    className="py-3 px-6 bg-gradient-to-r from-[#E65100] to-[#FF8F00] hover:from-[#FF8F00] hover:to-[#FFD700] text-white rounded-lg flex items-center transition-all duration-300"
-                  >
-                    {expandedService === service.id ? 'Show Less' : 'Learn More'}
-                    {expandedService === service.id ? (
-                      <FaTimes className="ml-2 text-white" />
-                    ) : (
-                      <FaArrowRight className="ml-2 text-white" />
-                    )}
-                  </button>
-                </div>
+             <div className="flex justify-between items-center">
+  <button
+    type="button"
+    onClick={() => handleServiceClick(service.id)}
+    className="cursor-pointer py-3 px-6 bg-gradient-to-r from-[#E65100] to-[#FF8F00] hover:from-[#FF8F00] hover:to-[#FFD700] text-white rounded-lg flex items-center transition-all duration-300"
+  >
+    {expandedService === service.id ? "Show Less" : "Learn More"}
+
+    {expandedService === service.id ? (
+      <FaTimes className="ml-2 text-white" />
+    ) : (
+      <FaArrowRight className="ml-2 text-white" />
+    )}
+  </button>
+</div>
               </div>
             ))}
           </div>
