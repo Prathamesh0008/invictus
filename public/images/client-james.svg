@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="James Wilson client portrait">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#fed7aa"/>
+    </linearGradient>
+    <linearGradient id="coat" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#334155"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+  </defs>
+  <rect width="240" height="240" rx="120" fill="url(#bg)"/>
+  <circle cx="120" cy="103" r="44" fill="#bf7a4a"/>
+  <path d="M78 89c5-31 23-50 50-49 29 1 43 20 44 51-27-13-61-12-94-2z" fill="#6b3f27"/>
+  <path d="M83 116c5 24 19 36 37 36 20 0 34-13 39-36 8 3 14 12 11 24-3 16-23 34-50 34s-47-18-50-34c-3-12 4-21 13-24z" fill="#6b3f27"/>
+  <circle cx="105" cy="106" r="4" fill="#111827"/>
+  <circle cx="136" cy="106" r="4" fill="#111827"/>
+  <path d="M107 130c9 7 20 7 29 0" fill="none" stroke="#7c3f20" stroke-width="5" stroke-linecap="round"/>
+  <path d="M53 225c7-45 38-73 67-73s60 28 67 73H53z" fill="url(#coat)"/>
+  <path d="M91 160h58l-29 34z" fill="#fff" opacity=".92"/>
+  <circle cx="190" cy="58" r="16" fill="#e65100"/>
+  <path d="M183 58h14" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+</svg>

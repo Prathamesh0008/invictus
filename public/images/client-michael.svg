@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Michael Rodriguez client portrait">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#fff7ed"/>
+      <stop offset="1" stop-color="#ffd700"/>
+    </linearGradient>
+    <linearGradient id="shirt" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#111827"/>
+      <stop offset="1" stop-color="#e65100"/>
+    </linearGradient>
+  </defs>
+  <rect width="240" height="240" rx="120" fill="url(#bg)"/>
+  <circle cx="120" cy="92" r="45" fill="#7c3f20"/>
+  <path d="M73 93c4-37 27-58 58-54 25 3 39 19 42 48-26-8-54-9-100 6z" fill="#1f2937"/>
+  <circle cx="120" cy="107" r="42" fill="#c87948"/>
+  <circle cx="104" cy="105" r="4" fill="#111827"/>
+  <circle cx="136" cy="105" r="4" fill="#111827"/>
+  <path d="M106 129c9 8 20 8 29 0" fill="none" stroke="#7c3f20" stroke-width="5" stroke-linecap="round"/>
+  <path d="M55 225c6-47 37-75 65-75s59 28 65 75H55z" fill="url(#shirt)"/>
+  <path d="M93 158l27 30 27-30" fill="#fff" opacity=".92"/>
+  <circle cx="190" cy="58" r="16" fill="#e65100" opacity=".9"/>
+  <path d="M181 59h18" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+</svg>
