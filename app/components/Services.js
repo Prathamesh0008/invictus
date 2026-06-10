@@ -43,7 +43,7 @@ export default function Services() {
   ]
 
   return (
-    <section className="bg-white py-10 sm:py-12">
+    <section className="bg-white pt-10 pb-3 sm:py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-9">
         <div className="mb-8 px-2 text-center sm:mb-10">
           <h2 className="inline-block bg-gradient-to-r from-[#FFD700] to-[#E65100] bg-clip-text text-3xl font-bold text-transparent sm:text-4xl lg:text-5xl">

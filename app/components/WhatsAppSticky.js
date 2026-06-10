@@ -19,11 +19,11 @@ export default function WhatsAppSticky() {
   return (
     <>
       {/* WhatsApp Sticky Button */}
-      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end cursor-pointer space-y-3">
+      <div className="fixed bottom-5 right-4 z-50 flex max-w-[calc(100vw-2rem)] flex-col items-end cursor-pointer space-y-3 sm:bottom-6 sm:right-6">
         {/* Expanded Card */}
         {isExpanded && (
-          <div className="bg-white rounded-2xl shadow-2xl border border-green-100 cursor-pointer animate-slide-up">
-            <div className="p-5 max-w-xs">
+          <div className="max-w-full rounded-2xl border border-green-100 bg-white shadow-2xl cursor-pointer animate-slide-up">
+            <div className="max-w-xs p-5">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center space-x-3">
                   <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center  cursor-pointer justify-center shadow-lg">

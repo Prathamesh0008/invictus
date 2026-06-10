@@ -1,6 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import { FaQuoteLeft, FaStar } from "react-icons/fa";
+import clientDavid from "../assets/testimonials/client-david-real.png";
+import clientEmily from "../assets/testimonials/client-emily-real.png";
+import clientJames from "../assets/testimonials/client-james-real.png";
+import clientMichael from "../assets/testimonials/client-michael-real.png";
+import clientSarah from "../assets/testimonials/client-sarah-real.png";
 
 export default function Testimonials() {
   const testimonials = [
@@ -8,7 +14,7 @@ export default function Testimonials() {
       name: "Michael Rodriguez",
       company: "TechGiant Inc.",
       role: "Supply Chain Director",
-      image: "/images/client-michael.svg",
+      image: clientMichael,
       content:
         "SwiftLogistics transformed our global distribution network. Their tracking and communication are exceptional.",
       rating: 5,
@@ -17,7 +23,7 @@ export default function Testimonials() {
       name: "Sarah Chen",
       company: "Global Retail Corp",
       role: "Logistics Manager",
-      image: "/images/client-sarah.svg",
+      image: clientSarah,
       content:
         "We reduced shipping costs while improving delivery times. Their team is responsive and professional.",
       rating: 5,
@@ -26,7 +32,7 @@ export default function Testimonials() {
       name: "James Wilson",
       company: "PharmaPlus",
       role: "Operations Head",
-      image: "/images/client-james.svg",
+      image: clientJames,
       content:
         "The cold chain solutions for our products are outstanding. Temperature monitoring gives us peace of mind.",
       rating: 5,
@@ -35,7 +41,7 @@ export default function Testimonials() {
       name: "Emily Thompson",
       company: "AutoParts Global",
       role: "Logistics Coordinator",
-      image: "/images/client-emily.svg",
+      image: clientEmily,
       content:
         "Their customs clearance service saved us many hours. Everything arrives on time, every time.",
       rating: 5,
@@ -44,7 +50,7 @@ export default function Testimonials() {
       name: "David Miller",
       company: "Export House",
       role: "Export Manager",
-      image: "/images/client-david.svg",
+      image: clientDavid,
       content:
         "Outstanding service. Our international shipments have never been smoother.",
       rating: 5,
@@ -54,7 +60,7 @@ export default function Testimonials() {
   const carouselItems = [...testimonials, ...testimonials];
 
   return (
-    <section className="bg-white py-16">
+    <section className="bg-white pt-12 pb-3 sm:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
@@ -68,16 +74,18 @@ export default function Testimonials() {
         </div>
 
         <div className="testimonial-mask overflow-hidden">
-          <div className="testimonial-track flex w-max gap-8 pb-8">
+          <div className="testimonial-track flex w-max gap-8 pb-2 sm:pb-8">
             {carouselItems.map((item, index) => (
               <article
                 key={`${item.name}-${index}`}
                 className="flex h-[430px] w-[290px] flex-shrink-0 flex-col rounded-2xl border border-gray-100 bg-white p-7 shadow-[0_18px_45px_rgba(0,0,0,0.08)]"
               >
                 <div className="mx-auto mb-5 h-20 w-20 overflow-hidden rounded-full border-4 border-white shadow-lg ring-2 ring-[#E65100]/20">
-                  <img
+                  <Image
                     src={item.image}
                     alt={item.name}
+                    width={80}
+                    height={80}
                     className="h-full w-full object-cover"
                   />
                 </div>
@@ -128,10 +136,10 @@ export default function Testimonials() {
 
         @keyframes testimonial-scroll {
           from {
-            transform: translateX(-50%);
+            transform: translateX(0);
           }
           to {
-            transform: translateX(0);
+            transform: translateX(-50%);
           }
         }
       `}</style>

@@ -3,7 +3,7 @@ export default function CallSticky() {
     <a
       href="tel:+31685865799"
       aria-label="Call us"
-      className="fixed bottom-28 right-8 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-orange-600 text-white shadow-lg hover:bg-blue-700"
+      className="fixed bottom-28 right-5 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-orange-600 text-white shadow-lg hover:bg-blue-700 sm:right-8"
     >
       {/* Simple phone icon (no extra library needed) */}
       <svg

@@ -202,7 +202,7 @@ export default function RootLayout({ children }) {
         </noscript>
         
         <Navbar />
-        <main className="flex-grow">{children}</main>
+        <main className="flex-grow overflow-x-hidden">{children}</main>
         <Footer />
         <CallSticky />
         <WhatsAppSticky />

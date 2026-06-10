@@ -99,16 +99,17 @@ export default function Footer() {
                 <FaMapMarkerAlt className="text-[#FAB045] mt-1 mr-4 flex-shrink-0" />
                 <div>
                   <p className="font-medium">Leyweg 836,</p>
-                  <p className="text-sm">2545GR 's-Gravenhage</p>
+                  <p className="text-sm">2545GR &apos;s-Gravenhage</p>
                 </div>
               </li>
               <li className="flex items-center">
                 <FaPhone className="text-[#FAB045] mr-4" />
                 +31685865799
               </li>
-              <li className="flex items-center">
+              <li className="flex min-w-0 items-center">
                 <FaEnvelope className="text-[#FAB045] mr-4" />
-                info@invictuslogi.com              </li>
+                <span className="min-w-0 break-all">info@invictuslogi.com</span>
+              </li>
               <li className="flex items-center">
                 <FaHeadset className="text-[#FAB045] mr-4" />
                 24/7 Customer Support
@@ -122,7 +123,7 @@ export default function Footer() {
             <p className="text-gray-500 mb-4 md:mb-0">
               © 2024 Invictus Logistics. All rights reserved.
             </p>
-            <div className="flex space-x-6 text-gray-500 text-sm">
+            <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-gray-500 text-sm md:justify-end">
               <a href="#" className="hover:text-[#FAB045] transition-colors duration-300">Privacy Policy</a>
               <a href="#" className="hover:text-[#FAB045] transition-colors duration-300">Terms of Service</a>
               <a href="#" className="hover:text-[#FAB045] transition-colors duration-300">Cookie Policy</a>

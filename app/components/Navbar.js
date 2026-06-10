@@ -10,7 +10,6 @@ import GetQuoteModal from './GetQuoteModal'
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isServicesOpen, setIsServicesOpen] = useState(false)
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false)
   const pathname = usePathname()
   
@@ -28,18 +27,13 @@ export default function Navbar() {
   }
 
   useEffect(() => {
-    setIsMenuOpen(false)
-    setIsServicesOpen(false)
-  }, [pathname])
-
-  useEffect(() => {
     if (isQuoteModalOpen) {
-      document.body.style.overflow = 'hidden'
+      document.body.style.overflowY = 'hidden'
     } else {
-      document.body.style.overflow = 'unset'
+      document.body.style.overflowY = ''
     }
     return () => {
-      document.body.style.overflow = 'unset'
+      document.body.style.overflowY = ''
     }
   }, [isQuoteModalOpen])
 

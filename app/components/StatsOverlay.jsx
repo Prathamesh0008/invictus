@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   FaRocket,
   FaHandshake,
@@ -10,11 +10,65 @@ import {
   FaShip,
   FaPlane,
   FaTruck,
-  FaGlobeAmericas,
   FaShieldAlt,
-  FaClock,
 } from "react-icons/fa";
 import { FiArrowRight } from "react-icons/fi";
+
+function AnimatedNumber({ end, suffix = "", decimals = 0 }) {
+  const [value, setValue] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const numberRef = useRef(null);
+
+  useEffect(() => {
+    const numberElement = numberRef.current;
+
+    if (!numberElement) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting || hasAnimated) {
+          return;
+        }
+
+        setHasAnimated(true);
+        const duration = 1400;
+        const startTime = performance.now();
+
+        const updateValue = (currentTime) => {
+          const progress = Math.min((currentTime - startTime) / duration, 1);
+          const easedProgress = 1 - Math.pow(1 - progress, 3);
+
+          setValue(end * easedProgress);
+
+          if (progress < 1) {
+            requestAnimationFrame(updateValue);
+          }
+        };
+
+        requestAnimationFrame(updateValue);
+      },
+      { threshold: 0.35 }
+    );
+
+    observer.observe(numberElement);
+
+    return () => observer.disconnect();
+  }, [end, hasAnimated]);
+
+  const formattedValue = value.toLocaleString("en-US", {
+    maximumFractionDigits: decimals,
+    minimumFractionDigits: decimals,
+  });
+
+  return (
+    <span ref={numberRef}>
+      {formattedValue}
+      {suffix}
+    </span>
+  );
+}
 
 export default function About() {
   const [expandedValue, setExpandedValue] = useState(null);
@@ -39,7 +93,7 @@ export default function About() {
     }, 4000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [banners.length]);
 
   const values = [
     {
@@ -99,10 +153,11 @@ export default function About() {
     },
   ];
 
-  const stats = [
-    { icon: <FaGlobeAmericas />, value: "Global", label: "Trade Network" },
-    { icon: <FaClock />, value: "24/7", label: "Shipment Support" },
-    { icon: <FaShip />, value: "Air / Sea", label: "Freight Solutions" },
+  const companyStats = [
+    { end: 180, suffix: "+", label: "Countries Covered" },
+    { end: 99.8, suffix: "%", decimals: 1, label: "On-Time Deliveries" },
+    { end: 24, suffix: "/7", label: "Customer Support" },
+    { end: 5000, suffix: "+", label: "Successful Shipments" },
   ];
 
   const toggleValue = (index) => {
@@ -112,23 +167,17 @@ export default function About() {
   return (
     <main className="bg-white">
       {/* HERO SLIDER */}
-   <section className="py-20 bg-white">
+   <section className="bg-white pt-12 pb-6 sm:py-16 lg:py-20">
   <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="grid gap-16 lg:grid-cols-2 lg:items-stretch">
+    <div className="grid gap-8 sm:gap-12 lg:grid-cols-2 lg:items-stretch lg:gap-16">
 
       <div className="relative h-[420px] overflow-hidden rounded-3xl shadow-2xl lg:h-full">
         <img
-          src="/L4.jpg"
+          src="/contener.jpg" 
           alt="Global Logistics"
           className="absolute inset-0 h-full w-full object-cover"
         />
 
-        <div className="absolute bottom-6 left-6 bg-white p-5 rounded-2xl shadow-xl">
-          <h4 className="text-3xl font-bold text-[#E65100]">15+</h4>
-          <p className="text-gray-600 text-sm">
-            Years Of Logistics Excellence
-          </p>
-        </div>
       </div>
 
       <div>
@@ -153,26 +202,19 @@ export default function About() {
           networks while maintaining transparency throughout the entire process.
         </p>
 
-        <div className="grid grid-cols-2 gap-6 mt-8">
-          <div>
-            <h3 className="text-3xl font-bold text-[#E65100]">180+</h3>
-            <p className="text-gray-600">Countries Covered</p>
-          </div>
-
-          <div>
-            <h3 className="text-3xl font-bold text-[#E65100]">99.8%</h3>
-            <p className="text-gray-600">On-Time Deliveries</p>
-          </div>
-
-          <div>
-            <h3 className="text-3xl font-bold text-[#E65100]">24/7</h3>
-            <p className="text-gray-600">Customer Support</p>
-          </div>
-
-          <div>
-            <h3 className="text-3xl font-bold text-[#E65100]">5000+</h3>
-            <p className="text-gray-600">Successful Shipments</p>
-          </div>
+        <div className="mt-8 grid grid-cols-2 gap-x-6 gap-y-8 sm:gap-6">
+          {companyStats.map((stat) => (
+            <div key={stat.label}>
+              <h3 className="text-3xl font-bold text-[#E65100]">
+                <AnimatedNumber
+                  end={stat.end}
+                  suffix={stat.suffix}
+                  decimals={stat.decimals}
+                />
+              </h3>
+              <p className="text-gray-600">{stat.label}</p>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -180,30 +222,8 @@ export default function About() {
   </div>
 </section>
 
-      {/* STATS */}
-      <section className="relative z-10 -mt-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-6 rounded-3xl bg-white p-6 shadow-2xl md:grid-cols-3">
-            {stats.map((item, index) => (
-              <div
-                key={index}
-                className="flex items-center gap-5 rounded-2xl border border-gray-100 p-5"
-              >
-                <div className="text-4xl text-[#E65100]">{item.icon}</div>
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-900">
-                    {item.value}
-                  </h3>
-                  <p className="text-gray-500">{item.label}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ABOUT CONTENT */}
-      <section className="py-20">
+      <section className="pt-6 pb-12 sm:py-16 lg:py-20">
         <div className="container mx-auto grid gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
           <div>
             <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-[#E65100]">
@@ -233,7 +253,7 @@ export default function About() {
       </section>
 
       {/* SERVICES */}
-      <section className="bg-gray-50 py-20">
+      <section className="bg-gray-50 pt-12 pb-6 sm:py-16 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
             <h2 className="text-4xl font-bold text-gray-900">
@@ -264,7 +284,7 @@ export default function About() {
       </section>
 
       {/* CORE VALUES */}
-<section className="bg-white py-20">
+<section className="bg-white pt-6 pb-12 sm:py-16 lg:py-20">
   <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <div className="mx-auto mb-14 max-w-4xl text-center">
       <span className="mb-4 inline-block rounded-full bg-[#E65100]/10 px-5 py-2 text-sm font-semibold uppercase tracking-[0.22em] text-[#E65100]">

@@ -241,7 +241,7 @@ export default function Contact() {
             Connect with our logistics experts for tailored solutions that streamline your supply chain
           </p>
 
-          <div className="flex flex-wrap justify-center gap-6 sm:gap-10 md:gap-14 mt-8 sm:mt-12">
+          {/* <div className="flex flex-wrap justify-center gap-6 sm:gap-10 md:gap-14 mt-8 sm:mt-12">
             <div className="text-center group">
               <div className="text-xl sm:text-3xl font-bold text-[#FFD700]/90 mb-1 animate-pulse">24/7</div>
               <div className="text-gray-400/80 flex items-center justify-center gap-2 text-xs sm:text-sm font-medium">
@@ -263,7 +263,7 @@ export default function Contact() {
                 <span>Countries Supported</span>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 
