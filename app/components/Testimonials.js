@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { FaQuoteLeft, FaStar } from "react-icons/fa";
 import clientDavid from "../assets/testimonials/client-david-real.png";
@@ -9,6 +10,14 @@ import clientMichael from "../assets/testimonials/client-michael-real.png";
 import clientSarah from "../assets/testimonials/client-sarah-real.png";
 
 export default function Testimonials() {
+  const maskRef = useRef(null);
+  const dragState = useRef({
+    isDragging: false,
+    startX: 0,
+    scrollLeft: 0,
+  });
+  const [isDragging, setIsDragging] = useState(false);
+
   const testimonials = [
     {
       name: "Michael Rodriguez",
@@ -59,8 +68,63 @@ export default function Testimonials() {
 
   const carouselItems = [...testimonials, ...testimonials];
 
+  useEffect(() => {
+    const mask = maskRef.current;
+    if (!mask) return undefined;
+
+    let animationFrame;
+
+    const scroll = () => {
+      if (!dragState.current.isDragging) {
+        const halfway = mask.scrollWidth / 2;
+        mask.scrollLeft += 0.7;
+
+        if (mask.scrollLeft >= halfway) {
+          mask.scrollLeft -= halfway;
+        }
+      }
+
+      animationFrame = requestAnimationFrame(scroll);
+    };
+
+    animationFrame = requestAnimationFrame(scroll);
+
+    return () => cancelAnimationFrame(animationFrame);
+  }, []);
+
+  const handlePointerDown = (event) => {
+    const mask = maskRef.current;
+    if (!mask) return;
+
+    dragState.current = {
+      isDragging: true,
+      startX: event.clientX,
+      scrollLeft: mask.scrollLeft,
+    };
+    setIsDragging(true);
+    mask.setPointerCapture(event.pointerId);
+  };
+
+  const handlePointerMove = (event) => {
+    const mask = maskRef.current;
+    if (!mask || !dragState.current.isDragging) return;
+
+    const cursorDistance = event.clientX - dragState.current.startX;
+    mask.scrollLeft = dragState.current.scrollLeft - cursorDistance;
+  };
+
+  const stopDragging = (event) => {
+    const mask = maskRef.current;
+    dragState.current.isDragging = false;
+    setIsDragging(false);
+
+    if (mask?.hasPointerCapture(event.pointerId)) {
+      mask.releasePointerCapture(event.pointerId);
+    }
+  };
+
   return (
-    <section className="bg-white pt-12 pb-3 sm:py-16">
+    <section data-testimonials-section className="bg-white pt-12 pb-3 sm:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
@@ -73,8 +137,17 @@ export default function Testimonials() {
           </div>
         </div>
 
-        <div className="testimonial-mask overflow-hidden">
-          <div className="testimonial-track flex w-max gap-8 pb-2 sm:pb-8">
+        <div
+          ref={maskRef}
+          className={`testimonial-mask overflow-hidden ${
+            isDragging ? "cursor-grabbing" : "cursor-grab"
+          }`}
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={stopDragging}
+          onPointerCancel={stopDragging}
+        >
+          <div className="testimonial-track flex w-max select-none gap-8 pb-2 sm:pb-8">
             {carouselItems.map((item, index) => (
               <article
                 key={`${item.name}-${index}`}
@@ -122,25 +195,14 @@ export default function Testimonials() {
       </div>
 
       <style jsx>{`
-        .testimonial-mask {
+        [data-testimonials-section] .testimonial-mask {
           scrollbar-width: none;
+          touch-action: pan-y;
+          user-select: none;
         }
 
-        .testimonial-track {
-          animation: testimonial-scroll 28s linear infinite;
-        }
-
-        .testimonial-mask:hover .testimonial-track {
-          animation-play-state: paused;
-        }
-
-        @keyframes testimonial-scroll {
-          from {
-            transform: translateX(0);
-          }
-          to {
-            transform: translateX(-50%);
-          }
+        [data-testimonials-section] .testimonial-mask::-webkit-scrollbar {
+          display: none;
         }
       `}</style>
     </section>

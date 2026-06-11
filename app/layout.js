@@ -5,6 +5,14 @@ import Footer from "./components/Footer";
 import WhatsAppSticky from "./components/WhatsAppSticky";
 import CallSticky from "./components/CallSticky";
 import Script from "next/script";
+import { Crimson_Text } from "next/font/google";
+
+const crimsonText = Crimson_Text({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-crimson-text",
+  display: "swap",
+});
 
 const orbitron = localFont({
   src: [
@@ -206,6 +214,7 @@ export default function RootLayout({ children }) {
         <Footer />
         <CallSticky />
         <WhatsAppSticky />
+              <body className={crimsonText.className}></body>
       </body>
     </html>
   );

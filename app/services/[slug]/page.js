@@ -46,7 +46,7 @@ export default async function ServiceDetailPage({ params }) {
           Back To Services
         </Link>
 
-        <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+        <div className="grid gap-10  cursor-pointer lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div className="relative h-[360px] overflow-hidden rounded-3xl bg-gray-100 shadow-xl sm:h-[520px]">
             <Image
               src={service.image}
@@ -58,7 +58,7 @@ export default async function ServiceDetailPage({ params }) {
           </div>
 
           <div>
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.25em] text-[#E65100]">
+            <p className="mb-4 text-sm  cursor-pointer font-semibold uppercase tracking-[0.25em] text-[#E65100]">
               {service.label}
             </p>
 
@@ -74,18 +74,18 @@ export default async function ServiceDetailPage({ params }) {
               {service.points.map((point) => (
                 <div
                   key={point}
-                  className="flex items-center gap-3 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm"
+                  className="flex items-center cursor-pointer gap-3 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm"
                 >
-                  <FaCheck className="flex-shrink-0 text-[#E65100]" />
+                  <FaCheck className="flex-shrink-0 text-[#E65100] cursor-pointer" />
                   <span className="font-semibold text-gray-900">{point}</span>
                 </div>
               ))}
-            </div>
+            </div>    
           </div>
         </div>
 
-        <div className="mt-14 rounded-3xl border border-gray-200 bg-white p-6 shadow-xl sm:p-8 lg:p-10">
-          <h2 className="text-3xl font-bold text-gray-950">
+        <div className="mt-14 rounded-3xl  border border-gray-200 bg-white p-6 shadow-xl sm:p-8 lg:p-10">
+          <h2 className="text-3xl cursor-pointer font-bold text-gray-950">
             Related Information
           </h2>
 

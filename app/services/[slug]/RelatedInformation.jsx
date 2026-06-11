@@ -20,7 +20,7 @@ export default function RelatedInformation({ details }) {
             key={detail.title}
             type="button"
             onClick={() => toggleDetail(index)}
-            className={`rounded-2xl bg-gray-50 p-5 text-left transition hover:bg-[#E65100]/5 ${
+            className={`cursor-pointer rounded-2xl bg-gray-50 p-5 text-left transition hover:bg-[#E65100]/5 ${
               isOpen ? "ring-2 ring-[#E65100]/25" : ""
             }`}
           >
