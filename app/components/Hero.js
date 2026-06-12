@@ -1,36 +1,19 @@
 'use client'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { FaTruck, FaSearch } from 'react-icons/fa'
 import GetStartedModal from './GetStartedModal'
 import Lottie from 'lottie-react'
-import lightningLottie from '@/public/lottie/Loading_car.json'
-import GlobalLottie from '@/public/lottie/Global Network.json'
-import SecuredLottie from '@/public/lottie/Secured.json'
-import DeliveryLottie from '@/public/lottie/Dlivery Map.json'
+import lightningLottie from '../../public/lottie/Loading_car.json'
+import GlobalLottie from '../../public/lottie/Global Network.json'
+import SecuredLottie from '../../public/lottie/Secured.json'
+import DeliveryLottie from '../../public/lottie/DeliveryMap.json'
 import Link from "next/link";
 const Counter = ({ end, duration = 2000, suffix = '', prefix = '', decimals = 0, className = '' }) => {
   const [count, setCount] = useState(0)
   const countRef = useRef(null)
   const hasAnimated = useRef(false)
 
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && !hasAnimated.current) {
-          hasAnimated.current = true
-          animateCounter()
-        }
-      })
-    }, { threshold: 0.1 })
-
-    if (countRef.current) observer.observe(countRef.current)
-
-    return () => {
-      if (countRef.current) observer.unobserve(countRef.current)
-    }
-  }, [])
-
-  const animateCounter = () => {
+  const animateCounter = useCallback(() => {
     const startTime = Date.now()
     const startValue = 0
 
@@ -47,7 +30,26 @@ const Counter = ({ end, duration = 2000, suffix = '', prefix = '', decimals = 0,
     }
 
     requestAnimationFrame(updateCounter)
-  }
+  }, [decimals, duration, end])
+
+  useEffect(() => {
+    const countElement = countRef.current
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !hasAnimated.current) {
+          hasAnimated.current = true
+          animateCounter()
+        }
+      })
+    }, { threshold: 0.1 })
+
+    if (countElement) observer.observe(countElement)
+
+    return () => {
+      if (countElement) observer.unobserve(countElement)
+    }
+  }, [animateCounter])
 
   return (
     <span ref={countRef} className={className}>
