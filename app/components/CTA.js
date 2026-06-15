@@ -1,5 +1,5 @@
-'use client';
-
+"use client";
+import Link from "next/link";
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -43,21 +43,21 @@ export default function CTA() {
         </p>
 
         <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
-          <button
-            onClick={openModal}
-            className="inline-flex  cursor-pointer items-center justify-center rounded-xl bg-gradient-to-r from-[#E65100] to-[#FFD700] px-8 py-4 text-lg font-semibold text-white shadow-xl transition hover:from-[#FF8F00] hover:to-[#E65100]"
-          >
-            Request Quote
-            <FaArrowRight className="ml-3 text-sm" />
-          </button>
+      <Link
+  href="/contact"
+  className="inline-flex cursor-pointer items-center justify-center rounded-xl bg-gradient-to-r from-[#E65100] to-[#FFD700] px-8 py-4 text-lg font-semibold text-white shadow-xl transition hover:from-[#FF8F00] hover:to-[#E65100]"
+>
+  Request Quote
+  <FaArrowRight className="ml-3 text-sm" />
+</Link>
 
-          <button
+          {/* <button
             onClick={goToContact}
             className="inline-flex items-center   cursor-pointer justify-center rounded-xl border-2 border-white/80 px-8 py-4 text-lg font-semibold text-white transition hover:bg-white hover:text-gray-950"
           >
             <FaPhoneAlt className="mr-3 text-sm" />
             Contact Sales
-          </button>
+          </button> */}
         </div>
       </div>
 

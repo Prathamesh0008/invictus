@@ -84,7 +84,7 @@ export default async function ServiceDetailPage({ params }) {
           </div>
         </div>
 
-        <div className="mt-14 rounded-3xl  border border-gray-200 bg-white p-6 shadow-xl sm:p-8 lg:p-10">
+        <div className="mt-14 p-6 sm:p-8 lg:p-10">
           <h2 className="text-3xl cursor-pointer font-bold text-gray-950">
             Related Information
           </h2>

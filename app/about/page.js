@@ -115,9 +115,9 @@ export default function About() {
 
             <div className="mt-8 grid max-w-xl gap-3 sm:grid-cols-3">
               {[
-                { icon: <FaRoute />, label: "Planned Routes" },
-                { icon: <FaClock />, label: "On-Time Focus" },
-                { icon: <FaShieldAlt />, label: "Secure Cargo" },
+                // { icon: <FaRoute />, label: "Planned Routes" },
+                // { icon: <FaClock />, label: "On-Time Focus" },
+                // { icon: <FaShieldAlt />, label: "Secure Cargo" },
               ].map((item) => (
                 <div
                   key={item.label}
@@ -190,14 +190,14 @@ export default function About() {
               >
                 Discover More
               </Link>
-              <a
+              {/* <a
                 href="tel:+31685865799"
                 className="inline-flex items-center gap-3 text-sm font-bold text-[#12333B]"
               >
                 <FaHeadset className="text-xl text-[#E65100]" />
                 Call Anytime
                 <span className="text-[#E65100]">+31685865799</span>
-              </a>
+              </a> */}
             </div>
           </div>
           </div>

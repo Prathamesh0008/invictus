@@ -171,16 +171,17 @@ export default function Testimonials() {
                   {item.role}
                 </p>
 
-                <div className="mt-5 flex justify-center">
-                  {[...Array(item.rating)].map((_, i) => (
-                    <FaStar key={i} className="text-sm text-[#FFD700]" />
-                  ))}
+                <div className="mt-5 flex items-center justify-center gap-3">
+                  <FaQuoteLeft className="text-2xl text-[#E65100]" />
+                  <div className="flex gap-0.5">
+                    {[...Array(item.rating)].map((_, i) => (
+                      <FaStar key={i} className="text-sm text-[#FFD700]" />
+                    ))}
+                  </div>
                 </div>
 
-                <div className="relative mt-7 flex-1">
-                  <FaQuoteLeft className="absolute -left-1 -top-3 text-4xl text-gray-100" />
-
-                  <p className="relative z-10 text-base leading-relaxed text-gray-700">
+                <div className="mt-6 flex-1">
+                  <p className="text-base leading-relaxed text-gray-700">
                     {item.content}
                   </p>
                 </div>

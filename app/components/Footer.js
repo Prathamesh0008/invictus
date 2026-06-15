@@ -57,7 +57,7 @@ export default function Footer() {
         <div className="grid gap-10 lg:grid-cols-[1.25fr_0.75fr_0.75fr_1.1fr]">
           <div>
             <Link href="/" className="inline-flex">
-              <span className="relative block h-28 w-52 overflow-hidden">
+              <span className="relative block h-45 w-65 overflow-hidden">
                 <Image
                   src="/logo/Logoinv.png"
                   alt="Invictus Logi"

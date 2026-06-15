@@ -1,22 +1,20 @@
 // components/Navbar.jsx
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { FiTruck } from 'react-icons/fi'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import GetQuoteModal from './GetQuoteModal'
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false)
   const pathname = usePathname()
   
   const quickLinks = [
     { title: 'Home', href: '/' },
     { title: 'Services', href: '/services' },
-    { title: 'Tracking', href: '/tracking' },
+    // { title: 'Tracking', href: '/tracking' },
     { title: 'About Us', href: '/about' },
     { title: 'Contact', href: '/contact' },
   ]
@@ -26,19 +24,7 @@ export default function Navbar() {
     return pathname.startsWith(href)
   }
 
-  useEffect(() => {
-    if (isQuoteModalOpen) {
-      document.body.style.overflowY = 'hidden'
-    } else {
-      document.body.style.overflowY = ''
-    }
-    return () => {
-      document.body.style.overflowY = ''
-    }
-  }, [isQuoteModalOpen])
-
   return (
-    <>
       <nav className="bg-[#FDFDFD] shadow-lg sticky top-0 z-50 border-b border-gray-200">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-3">
@@ -84,16 +70,21 @@ export default function Navbar() {
               {/* Contact info - hidden on small mobile, visible on sm+ */}
               <div className="hidden sm:block text-right">
                <div className="text-[13px] text-[#A0A1A2]">Need Help?</div>
-                <div className="text-gray-1000 font-bold text-base">+31685865799</div>
+                <a
+                  href="tel:+31685865799"
+                  className="text-base font-bold text-[#071120] antialiased transition hover:text-[#E65100]"
+                >
+                  +31685865799
+                </a>
               </div>
               
               {/* Quote button - always visible */}
-              <button 
-                onClick={() => setIsQuoteModalOpen(true)}
+              <Link
+                href="/contact"
                 className="bg-gradient-to-r from-[#ff7a00] to-[#ffd700] hover:from-[#ff7a00] hover:to-[#ffd700] text-white font-semibold py-2 px-3 sm:px-4 rounded-lg transition-all duration-300 hover:shadow-md hover:scale-105 shadow-sm text-xs sm:text-sm cursor-pointer whitespace-nowrap"
               > 
                 Get Quote
-              </button>
+              </Link>
 
               {/* Mobile Menu Button */}
               <button 
@@ -146,15 +137,15 @@ export default function Navbar() {
                   </div>
                   
                   {/* Quote button already present in navbar, but we keep it in menu for convenience */}
-                  <button 
+                  <Link
+                    href="/contact"
                     onClick={() => {
                       setIsMenuOpen(false)
-                      setIsQuoteModalOpen(true)
                     }}
                     className="w-full bg-gradient-to-r from-[#FAB045] to-[#f8c468] text-white font-semibold py-3 px-6 rounded-lg text-base shadow-md hover:shadow-lg transition-all duration-300"
                   >
                     Get Free Quote
-                  </button>
+                  </Link>
                   
                   <button className="w-full mt-2 bg-white border-2 border-[#A0A1A2] text-gray-800 font-semibold py-2 px-6 rounded-lg hover:border-[#FAB045] transition-all duration-300 text-sm">
                     Track Shipment
@@ -185,11 +176,5 @@ export default function Navbar() {
           }
         `}</style>
       </nav>
-
-      <GetQuoteModal 
-        isOpen={isQuoteModalOpen} 
-        onClose={() => setIsQuoteModalOpen(false)} 
-      />
-    </>
   )
 }
